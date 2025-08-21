@@ -1,0 +1,169 @@
+﻿<Window x:Class="Tetris.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tetris"
+        mc:Ignorable="d"
+        Title="Tetris" Height="800" Width="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" 
+              Grid.RowSpan="20" Grid.ColumnSpan="10"
+              Width="400" Height="760"
+              HorizontalAlignment="Left" VerticalAlignment="Top"
+              Margin="0">
+            <ItemsControl ItemsSource="{Binding Cells}"
+                          Width="360" Height="720"
+                          HorizontalAlignment="Center" VerticalAlignment="Center">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="20" Columns="10"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="{Binding Background}"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.1"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+        <TextBlock Grid.Column="0"
+            x:Name="GameStateText"
+            Width="256" Height="64"
+            Text="{Binding GameStateText}"
+            FontSize="38"
+            Foreground="Black"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            TextAlignment="Center"
+            Margin="0"/>
+
+        <Grid Grid.Column="1"
+              Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="144"/>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+                x:Name="NextText"
+                Width="128"
+                Height="32"
+                Text="Next shape:"
+                FontSize="24"
+                Foreground="Black"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                TextAlignment="Left"
+                Margin="0"/>
+
+            <Grid Grid.Row="1"
+                Grid.RowSpan="4" Grid.ColumnSpan="4"
+                Width="144" Height="144"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="0">
+                <ItemsControl ItemsSource="{Binding NextCells}"
+                            Width="144" Height="144">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Rows="4" Columns="4"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{Binding Background}"
+                                BorderBrush="LightGray"
+                                BorderThickness="0.1"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+
+            <TextBlock Grid.Row="2"
+                x:Name="ScoreText"
+                Width="128"
+                Height="32"
+                Text="{Binding ScoreText}"
+                FontSize="24"
+                Foreground="Black"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                TextAlignment="Left"
+                Margin="0"/>
+
+            <StackPanel Grid.Row="3">
+                <TextBlock
+                Width="128"
+                Height="32"
+                Text="a - move left"
+                FontSize="18"
+                Foreground="Black"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                TextAlignment="Left"
+                Margin="0"/>
+                <TextBlock
+                Width="128"
+                Height="32"
+                Text="d - move right"
+                FontSize="18"
+                Foreground="Black"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top" TextAlignment="Left"
+                Margin="0"/>
+                <TextBlock
+                Width="128"
+                Height="32"
+                Text="q - rotate left"
+                FontSize="18"
+                Foreground="Black"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                TextAlignment="Left"
+                Margin="0"/>
+                <TextBlock
+                Width="128"
+                Height="32"
+                Text="e - rotate right"
+                FontSize="18"
+                Foreground="Black"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                TextAlignment="Left"
+                Margin="0"/>
+                <TextBlock
+                Width="128"
+                Height="32"
+                Text="s - drop shape"
+                FontSize="18"
+                Foreground="Black"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                TextAlignment="Left"
+                Margin="0"/>
+                <TextBlock
+                Width="128"
+                Height="32"
+                Text="p - pause"
+                FontSize="18"
+                Foreground="Black"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                TextAlignment="Left"
+                Margin="0"/>
+                <TextBlock
+                Width="128"
+                Height="32"
+                Text="r - reset"
+                FontSize="18"
+                Foreground="Black"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                TextAlignment="Left"
+                Margin="0"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
