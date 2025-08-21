@@ -218,8 +218,11 @@ namespace Tetris.ViewModel
 
         public void Pause()
         {
-            if (game.GetGameState() == GameState.Running) { game.SetGameState(GameState.Paused); }
-            else { game.SetGameState(GameState.Running); }
+            if (game.GetGameState() != GameState.GameOver)
+            {
+                if (game.GetGameState() == GameState.Running) { game.SetGameState(GameState.Paused); }
+                else { game.SetGameState(GameState.Running); }
+            }
         }
     }
 }
