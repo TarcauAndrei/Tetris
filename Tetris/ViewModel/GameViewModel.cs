@@ -65,6 +65,8 @@ namespace Tetris.ViewModel
 
         private void SetUpTimer()
         {
+            StopTimer();
+
             stopwatch.Start();
             lastFrameTime = stopwatch.Elapsed;
             CompositionTarget.Rendering += GameLoop;

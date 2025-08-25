@@ -44,28 +44,24 @@ namespace Tetris.Main
 
         public void Update(double deltaTime)
         {
-            switch (gameState)
+            if (gameState != GameState.Running) { return; }
+
+            currentFallTime -= deltaTime;
+            if (currentFallTime <= 0)
             {
-                case GameState.Running:
-                    currentFallTime -= deltaTime;
-                    if (currentFallTime <= 0)
-                    {
-                        currentFallTime = fallTime;
-                        if (CheckShapeCollision(new Shape(currentShape, currentShape.transform.position + new Point(1, 0))) == false)
-                        {
-                            ShapeFall(currentShape);
-                        }
-                        else
-                        {
-                            PlaceShape(currentShape);
-                            NextShape();
-                        }
-                    }
-                    currentShapeProjection = ProjectShapeDown(currentShape);
-                    break;
-                default:
-                    break;
+                currentFallTime = fallTime;
+                if (CheckShapeCollision(new Shape(currentShape, currentShape.transform.position + new Point(1, 0))) == false)
+                {
+                    ShapeFall(currentShape);
+                }
+                else
+                {
+                    PlaceShape(currentShape);
+                    NextShape();
+                }
             }
+
+            currentShapeProjection = ProjectShapeDown(currentShape);
         }
 
         private void ShapeFall(Shape shape)
@@ -149,7 +145,7 @@ namespace Tetris.Main
             nextShape = GetRandomShape();
         }
 
-        #region Rotation
+        #region ShapeRotation
         public void RotateShapeLeft(Shape shape)
         {
             if (gameState != GameState.Running) { return; }
@@ -172,9 +168,9 @@ namespace Tetris.Main
                 shape.RotateRight(gameGrid.transform.size.x);
             }
         }
-        #endregion Rotation
+        #endregion ShapeRotation
 
-        #region Movement
+        #region ShapeMovement
         public void MoveShapeLeft(Shape shape)
         {
             if (gameState != GameState.Running) { return; }
@@ -194,7 +190,6 @@ namespace Tetris.Main
                 shape.transform.position.x++;
             }
         }
-        #endregion Movement
 
         public void DropShape(Shape shape)
         {
@@ -205,7 +200,9 @@ namespace Tetris.Main
                 ShapeFall(shape);
             }
         }
+        #endregion ShapeMovement
 
+        #region Line
         public bool CheckLine(int line)
         {
             int sum = 0;
@@ -231,6 +228,7 @@ namespace Tetris.Main
             score += 10;
             if (fallTime > 0.02) { fallTime -= 0.02; }
         }
+        #endregion Line
 
         public Shape GetRandomShape()
         {
