@@ -17,6 +17,18 @@ namespace Tetris.Main
 {
     internal class Game
     {
+        private Grid gameGrid;
+        private Shape currentShape;
+        private Shape nextShape;
+        private Shape currentShapeProjection;
+
+        private GameState gameState;
+        private int score;
+
+        private double currentFallTime = 1;
+        private double fallTime = 1;
+        private double finePlaceTime = 0.5;
+
         public Game()
         {
             this.gameGrid = new Grid(new Size(20, 10));
@@ -29,18 +41,6 @@ namespace Tetris.Main
             gameState = GameState.Running;
             score = 0;
         }
-
-        private Grid gameGrid;
-        private Shape currentShape;
-        private Shape nextShape;
-        private Shape currentShapeProjection;
-
-        private GameState gameState;
-        private int score;
-
-        private double currentFallTime = 1;
-        private double fallTime = 1;
-        private double finePlaceTime = 0.5;
 
         public void Update(double deltaTime)
         {

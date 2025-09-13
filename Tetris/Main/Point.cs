@@ -8,6 +8,9 @@ namespace Tetris.Main
 {
     internal class Point
     {
+        public double y;
+        public double x;
+
         public Point()
         {
             this.y = 0;
@@ -23,9 +26,6 @@ namespace Tetris.Main
             this.y = point.y;
             this.x = point.x;
         }
-
-        public double y;
-        public double x;
 
         public static Point operator +(Point a, Point b) { return new Point(a.y + b.y, a.x + b.x); }
         public static Point operator -(Point a, Point b) { return new Point(a.y - b.y, a.x - b.x); }

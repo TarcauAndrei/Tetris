@@ -13,6 +13,8 @@ namespace Tetris.Shapes
 {
     internal class Shape : Grid
     {
+        protected ShapeType shapeType;
+
         public Shape()
         {
             transform = new Transform();
@@ -29,7 +31,5 @@ namespace Tetris.Shapes
             transform = new Transform(position, shape.transform.size);
             grid = (int[,])shape.grid.Clone();
         }
-
-        protected ShapeType shapeType;
     }
 }

@@ -10,6 +10,8 @@ namespace Tetris.Main
 {
     internal class Grid : GameObject
     {
+        protected int[,] grid;
+
         public Grid()
         {
             this.transform = new Transform();
@@ -20,7 +22,7 @@ namespace Tetris.Main
             this.transform = new Transform(size);
             this.grid = new int[size.y, size.x];
         }
-        
+
         public Grid(int[,] grid)
         {
             this.transform = new Transform();
@@ -32,8 +34,6 @@ namespace Tetris.Main
             this.transform = new Transform(grid.transform);
             this.grid = (int[,])grid.grid.Clone();
         }
-
-        protected int[,] grid;
 
         public int Get(int y, int x) { return grid[y, x]; }
         public void Set(int y, int x, int value) { grid[y, x] = value; }

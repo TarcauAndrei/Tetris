@@ -15,19 +15,6 @@ namespace Tetris.ViewModel
 {
     internal class GameViewModel : ViewModel
     {
-        public GameViewModel()
-        {
-            game = new Game();
-            game.Update(0);
-            SetUpTimer();
-
-            Cells = new ObservableCollection<CellViewModel>();
-            InitializeCells();
-
-            NextCells = new ObservableCollection<CellViewModel>();
-            InitializeNextCells();
-        }
-
         Game game;
 
         public ObservableCollection<CellViewModel> Cells { get; set; }
@@ -78,6 +65,19 @@ namespace Tetris.ViewModel
             stopwatch.Stop();
         }
         #endregion Timer
+
+        public GameViewModel()
+        {
+            game = new Game();
+            game.Update(0);
+            SetUpTimer();
+
+            Cells = new ObservableCollection<CellViewModel>();
+            InitializeCells();
+
+            NextCells = new ObservableCollection<CellViewModel>();
+            InitializeNextCells();
+        }
 
         private void InitializeCells()
         {
