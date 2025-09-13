@@ -41,9 +41,9 @@ namespace Tetris.Main
 
         public void RotateLeft(double gameGridXSize)
         {
-            if ((int)transform.position.x + (int)transform.size.x == (int)gameGridXSize)
+            if ((int)transform.position.x + (int)transform.size.y > (int)gameGridXSize)
             {
-                for (int i = transform.size.x; i < transform.size.y; i++) { transform.position.x--; }
+                transform.position.x -= transform.position.x + transform.size.y - gameGridXSize;
             }
 
             int[,] rotatedGrid = new int[transform.size.x, transform.size.y];
@@ -60,9 +60,9 @@ namespace Tetris.Main
 
         public void RotateRight(double gameGridXSize)
         {
-            if ((int)transform.position.x + (int)transform.size.x == (int)gameGridXSize)
+            if ((int)transform.position.x + (int)transform.size.y > (int)gameGridXSize)
             {
-                for (int i = transform.size.x; i < transform.size.y; i++) { transform.position.x--; }
+                transform.position.x -= transform.position.x + transform.size.y - gameGridXSize;
             }
 
             int[,] rotatedGrid = new int[transform.size.x, transform.size.y];

@@ -217,16 +217,17 @@ namespace Tetris.Main
 
         public void ClearLine(int line)
         {
-            for (int i = line; i > 1; i--)
+            for (int i = line; i > 0; i--)
             {
                 for (int j = 0; j < (int)gameGrid.transform.size.x; j++)
                 {
                     gameGrid.Set(i, j, gameGrid.Get(i - 1, j));
                 }
             }
+            for (int j = 0; j < (int)gameGrid.transform.size.x; j++) { gameGrid.Set(0, j, 0); }
 
             score += 10;
-            if (fallTime > 0.02) { fallTime -= 0.02; }
+            if (fallTime > 0.01) { fallTime -= 0.01; }
         }
         #endregion Line
 
